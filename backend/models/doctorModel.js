@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { mongo } from "mongoose";
 
 const doctorSchema = new mongoose.Schema({
     name: { type: String, required: true },
@@ -9,12 +9,15 @@ const doctorSchema = new mongoose.Schema({
     degree: { type: String, required: true },
     experience: { type: String, required: true },
     about: { type: String, required: true },
-    available: { type: Boolean, default: true },
+    available: { type: Boolean, default:true },
     fees: { type: Number, required: true },
-    slots_booked: { type: Object, default: {} },
     address: { type: Object, required: true },
     date: { type: Number, required: true },
-}, { minimize: false })
+    slots_booked: { type: Object, default: {} },
 
-const doctorModel = mongoose.models.doctor || mongoose.model("doctor", doctorSchema);
-export default doctorModel;
+
+},{minimize:false})
+
+const doctorModel=mongoose.models.doctor || mongoose.model('doctor',doctorSchema)
+
+export default doctorModel
